@@ -1,6 +1,5 @@
 -r ./base.txt
 
-Werkzeug==0.14.1  # pyup: < 0.15 # https://github.com/pallets/werkzeug
 ipdb==0.12.2  # https://github.com/gotcha/ipdb
 Sphinx==2.2.0  # https://github.com/sphinx-doc/sphinx
 psycopg2==2.8.3 --no-binary psycopg2  # https://github.com/psycopg/psycopg2
@@ -23,7 +22,6 @@ pylint-celery==0.3  # https://github.com/PyCQA/pylint-celery
 # ------------------------------------------------------------------------------
 factory-boy==2.12.0  # https://github.com/FactoryBoy/factory_boy
 
-django-debug-toolbar==2.0  # https://github.com/jazzband/django-debug-toolbar
 django-extensions==2.2.1  # https://github.com/django-extensions/django-extensions
 django-coverage-plugin==1.6.0  # https://github.com/nedbat/django_coverage_plugin
 pytest-django==3.5.1  # https://github.com/pytest-dev/pytest-django

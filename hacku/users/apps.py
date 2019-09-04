@@ -1,13 +1,10 @@
+"""Users app."""
+
 from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
 
 
-class UsersConfig(AppConfig):
-    name = "hacku.users"
-    verbose_name = _("Users")
+class UsersAppConfig(AppConfig):
+    """User app config."""
 
-    def ready(self):
-        try:
-            import hacku.users.signals  # noqa F401
-        except ImportError:
-            pass
+    name = 'hacku.users'
+    verbose_name = 'Users'

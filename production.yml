@@ -34,7 +34,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/production/caddy/Dockerfile
-    image: cride_production_caddy
+    image: hacku_production_caddy
     depends_on:
       - django
     volumes:

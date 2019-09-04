@@ -1,14 +1,32 @@
+"""Users URLs."""
+
+# Django
 from django.urls import path
 
-from hacku.users.views import (
-    user_redirect_view,
-    user_update_view,
-    user_detail_view,
-)
+# Views
+from .views import users as users_views
+from .views import profiles as profiles_views
 
-app_name = "users"
 urlpatterns = [
-    path("~redirect/", view=user_redirect_view, name="redirect"),
-    path("~update/", view=user_update_view, name="update"),
-    path("<str:username>/", view=user_detail_view, name="detail"),
+    # Management
+    path(
+        route='login/',
+        view=users_views.LoginView.as_view(),
+        name='login'
+    ),
+    path(
+        route='',
+        view=users_views.SignupView.as_view(),
+        name='signup'
+    ),
+    # path(
+    #     route='me/profile/',
+    #     view=views.UpdateProfile.as_view(),
+    #     name='update_profile'
+    # ),
+    # path(
+    #     route='<str:username>/',
+    #     view=views.UserDetailView.as_view(),
+    #     name='detail'
+    # )
 ]
