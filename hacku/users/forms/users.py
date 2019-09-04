@@ -125,7 +125,6 @@ class SignUpForm(forms.Form):
         phone_prefix = self.cleaned_data['phone_prefix']
         phone = self.cleaned_data['phone_number']
         return '{}{}'.format(phone_prefix, phone)
-        
 
     def clean(self):
         """Verify password confirmation match."""
@@ -138,7 +137,9 @@ class SignUpForm(forms.Form):
         return data
 
     def save(self):
-        """Create user data"""
+        """Create user data."""
         data = self.cleaned_data
         data.pop('password_confirmation')
+        data.pop('phone_prefix')
         user = User.objects.create_user(**data)
+        return user

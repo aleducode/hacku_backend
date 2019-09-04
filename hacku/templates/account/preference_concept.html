@@ -1,0 +1,77 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block inner %}
+<h1>{% trans "Sign Up Complement" %}</h1>
+<p>{% blocktrans %}Complement information for: {% endblocktrans %}@{{request.user.username}}.</p>
+
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+  {% for value in form.errors%}
+    {{value}}
+  {% endfor %}
+  {% for dict in form.errors.values %}
+  {{dict}}
+  {% endfor %}
+</div>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <p>{{form.content_type.label}}</p>
+      {{form.content_type}}
+
+    </div>
+    <div class="col-md-12 mb-3">
+      <p>{{form.area.label}}</p>
+      {{form.area}}
+
+    </div>
+    {# Time-hour field #}
+    <div class="col-sm-6">
+        <div class="form-group">
+          <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+            <input type="text" name="hour" placeholder="Preference hour" class="form-control datetimepicker-input"
+              data-target="#datetimepicker3" />
+            <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {# English conten label #}
+      <div class="col-md-12 mb-3">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck1" name="english">
+          <label class="custom-control-label" for="customCheck1">{{form.english_content.label}}</label>
+        </div>
+      </div>
+      <input type="hidden" name="user" value="{{request.user.pk}}">
+
+
+  </div>
+
+
+
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="btn btn-primary" type="submit">{% trans "Finish" %}</button>
+</form>
+
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker3').datetimepicker({
+      format: 'HH:mm',
+      
+    });
+  });
+</script>
+{% endblock javascript %}

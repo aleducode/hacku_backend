@@ -1,0 +1,13 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block title %}Thanks!!{% endblock %}
+
+{% block inner %}
+<h1>Welcome <img src="{% static 'images/ico.png' %}" alt=""> @{{request.user.username}}</h1>
+
+<h3>Lets go to learn!!!</h3>
+
+
+{% endblock %}
+
+

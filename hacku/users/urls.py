@@ -15,15 +15,25 @@ urlpatterns = [
         name='login'
     ),
     path(
+        route='logout/',
+        view=users_views.LogoutView.as_view(),
+        name='logout'
+    ),
+    path(
         route='',
         view=users_views.SignupView.as_view(),
         name='signup'
     ),
-    # path(
-    #     route='me/profile/',
-    #     view=views.UpdateProfile.as_view(),
-    #     name='update_profile'
-    # ),
+    path(
+        route='complement/',
+        view=profiles_views.PreferenceContentProfileView.as_view(),
+        name='complement'
+    ),
+    path(
+        route='thanks/',
+        view=users_views.ThanksView.as_view(),
+        name='thanks'
+    ),
     # path(
     #     route='<str:username>/',
     #     view=views.UserDetailView.as_view(),

@@ -13,6 +13,21 @@ class ContentType(models.Model):
     name = models.CharField('Content type name', max_length=140)
     slug_name = models.SlugField(unique=True, max_length=40)
 
+    def __str__(self):
+        """Return name name."""
+        return str(self.name)
+
+
+class ContentArea(models.Model):
+    """Content Area model."""
+
+    name = models.CharField('Content area name', max_length=140)
+    slug_name = models.SlugField(unique=True, max_length=40)
+
+    def __str__(self):
+        """Return name name."""
+        return str(self.name)
+
 
 class PreferenceContentProfile(HackuModel):
     """Preference content model.
@@ -22,10 +37,11 @@ class PreferenceContentProfile(HackuModel):
 
     user = models.OneToOneField('users.User', on_delete=models.CASCADE)
 
-    content_type = models.ForeignKey(
-        'profiles.ContentType',
-        on_delete=models.SET_NULL,
-        null=True
+    content_type = models.ManyToManyField(
+        ContentType,
+        )
+    area = models.ManyToManyField(
+        ContentArea,
         )
 
     hour = models.TimeField(
