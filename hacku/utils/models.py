@@ -20,7 +20,7 @@ COUNTRY_CODES = [
     ('AO', 'Angola +244'),
     ('AI', 'Anguilla +1-264'),
     ('AG', 'Antigua and Barbuda +1-268'),
-    ('AR', 'Argentina +54'),
+    ('+54', 'Argentina +54'),
     ('AM', 'Armenia +374'),
     ('AW', 'Aruba +297'),
     ('A', 'Australia +61'),

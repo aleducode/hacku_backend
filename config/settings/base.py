@@ -279,3 +279,7 @@ INSTALLED_APPS += ["compressor"]
 STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # Your stuff...
 # ------------------------------------------------------------------------------
+# Twilio
+ACCOUNT_SID_TWILIO = "ACee4d3b631b78711699fddf9ec2f52824"
+# Your Auth Token from twilio.com/console
+AUTH_TOKEN  = "your_auth_token"

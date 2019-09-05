@@ -17,4 +17,5 @@ django-model-utils==3.2.0  # https://github.com/jazzband/django-model-utils
 django-crispy-forms==1.7.2  # https://github.com/django-crispy-forms/django-crispy-forms
 django-compressor==2.3  # https://github.com/django-compressor/django-compressor
 django-redis==4.10.0  
+twilio
 

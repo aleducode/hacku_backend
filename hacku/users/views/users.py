@@ -5,13 +5,14 @@ from django.views.generic import FormView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import views as auth_views
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 # Forms
 from hacku.users.forms import (
     SignUpForm
 )
-
+# Twilio
+from twilio.rest import Client
 
 class LoginView(auth_views.LoginView):
     """Login view."""
@@ -37,6 +38,18 @@ class ThanksView(LoginRequiredMixin, TemplateView):
 
     template_name = 'account/thanks.html'
 
+    def get(self, request, *args, **kwargs):
+        user = request.user
+        # Twilio
+        account_sid = "ACee4d3b631b78711699fddf9ec2f52824"
+        # Your Auth Token from twilio.com/console
+        auth_token  = "32c89246ef729ecfb52b789a3a81313a"
+        client = Client(account_sid, auth_token)
+        message = client.messages.create(
+                to='whatsapp:{}'.format(user.phone_number), 
+                from_='whatsapp:+14155238886',
+                body="Hello @{} lets go to learn with HACKU!".format(user.username))       
+        return super().get(request, *args, **kwargs)
 
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
     """logout view."""
