@@ -1,0 +1,74 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% block title %}Thanks!!{% endblock %}
+{% block css %}
+<style>
+        .iframe-container {
+            overflow: hidden;
+            padding-top: 56.25%;
+            position: relative;
+          }
+          
+          .iframe-container iframe {
+             border: 0;
+             height: 100%;
+             left: 0;
+             position: absolute;
+             top: 0;
+             width: 100%;
+          }
+          
+          
+          
+          
+        
+          .wrapper {
+            background-color: #fff;
+            border-radius: 1rem;
+            margin: 0 auto;
+            max-width: 1020px;
+            padding: 2rem;
+            width: 100%;
+          }
+</style>
+{% endblock css %}
+
+
+{% block row %}
+<div class="wrapper">
+        <div class="col-md-8 offset-md-2">
+                <p>Hello! <strong>@{{request.user.username}} </strong>don't remember rate our content at the end ! 😅😅</p>
+                
+                  </div>
+        <div class="col-md-12 mb-5">
+        <div class="iframe-container">
+          <iframe src="{{content.url}}" frameborder="0"></iframe>
+        </div>
+    </div>
+    <div class="col-md-8 offset-md-2" >
+        
+        <div class="col-md-12">
+            <h2>Rate experience 👇👇</h2>
+            <p>hoy many difficult was?</p>
+            <div class="row">
+            <div class="col-md-4" align="left">0%</div>
+            <div class="col-md-4" align="center">50%</div>
+            <div class="col-md-4" align="right">100%</div>
+        </div>
+        <input type="range" class="custom-range" min="0" max="100" step="10" init="0" id="customRange2">
+
+        </div>
+            
+    </div>
+    
+{% endblock %}
+{% block javascript %}
+  <script>
+        document.getElementById("customRange2").addEventListener("change", RateFunction);
+
+        function RateFunction() {
+          var x = document.getElementById("customRange2");
+          alert(x.value);
+        }
+  </script>
+{% endblock javascript %}

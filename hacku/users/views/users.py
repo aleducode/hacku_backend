@@ -5,7 +5,7 @@ from django.views.generic import FormView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import views as auth_views
-from django.contrib.auth import login, logout
+from django.contrib.auth import login
 
 # Forms
 from hacku.users.forms import (
@@ -13,6 +13,7 @@ from hacku.users.forms import (
 )
 # Twilio
 from twilio.rest import Client
+
 
 class LoginView(auth_views.LoginView):
     """Login view."""

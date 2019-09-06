@@ -1,9 +1,9 @@
-{% load static i18n compress%}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}hacku{% endblock title %}</title>
+    <title>Sign In</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -13,7 +13,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
 
-    <link rel="icon" href="{% static 'images/ico.png' %}">
+    <link rel="icon" href="/static/images/ico.png">
 
    
     
@@ -24,14 +24,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <!-- Your stuff: Third-party CSS libraries go here -->
-    {% compress css %}
+    
     <!-- This file stores project-specific CSS -->
     
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    <link href="/static/css/project.css" rel="stylesheet">
     
-    {% endcompress %}
-    {% block css %} 
-    {% endblock %}
+    
+     
+    
 
   </head>
 
@@ -42,7 +42,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href=""><img src="{% static "images/logo.png" %}" width="80" alt=""></a>
+        <a class="navbar-brand" href=""><img src="/static/images/logo.png" width="80" alt=""></a>
 
         <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
@@ -52,25 +52,16 @@
             <li class="nav-item">
               <a class="nav-link" href="">About</a>
             </li>
-            {% if request.user.is_authenticated %}
+            
               <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="">{% trans "My Profile" %}</a>
+                
+                <a id="sign-up-link" class="nav-link" href="/">Sign Up</a>
               </li>
               <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a class="nav-link" href="">{% trans "Sign Out" %}</a>
+                
+                <a id="log-in-link" class="nav-link" href="">Sign In</a>
               </li>
-            {% else %}
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="sign-up-link" class="nav-link" href="{% url 'users:signup' %}">{% trans "Sign Up" %}</a>
-              </li>
-              <li class="nav-item">
-                {# URL provided by django-allauth/account/urls.py #}
-                <a id="log-in-link" class="nav-link" href="">{% trans "Sign In" %}</a>
-              </li>
-            {% endif %}
+            
           </ul>
         </div> -->
       </nav>
@@ -79,19 +70,42 @@
 
     <div class="container">
 
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-          {% endfor %}
-      {% endif %}
+      
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+      
+<div class="row">
+    
+  <div class="col-md-6 offset-md-3">
+    
+
+<h1>Sign In</h1>
+
+<p>If you have not created an account yet, then please
+<a href="/">sign up</a> first.</p>
+
+
+<form class="login" method="POST">
+  <input type="hidden" name="csrfmiddlewaretoken" value="HD1Lwytk52QR4JKfo5RuY9Ufbo5JqbuUvesBKL840J0LUDN4EVxvPm6xKT9g8GHh">
+  <div class="form-group">
+    <input class="form-control" type="text" name="username" placeholder="username" required="true">
+
+  </div>
+  <div class="form-group">
+
+    <input class="form-control" type="password" name="password" placeholder="password">
+  </div>
+
+  <button class="primaryAction btn btn-primary" type="submit">Sign In</button>
+</form>
+
+
+  </div>
+</div>
+
 
     </div> <!-- /container -->
 
-    {% block modal %}{% endblock modal %}
+    
 
     <!-- Le javascript
     ================================================== -->
@@ -109,11 +123,11 @@
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
       <!-- place project specific Javascript in this file -->
-      {% compress js %}
-      <script src="{% static 'js/project.js' %}"></script>
-      {% endcompress %}
-      {% block javascript %}
-    {% endblock javascript %}
+      
+      <script src="/static/js/project.js"></script>
+      
+      
+    
   </body>
 </html>
  
