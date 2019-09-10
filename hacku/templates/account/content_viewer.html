@@ -55,8 +55,11 @@
             <div class="col-md-4" align="center">50%</div>
             <div class="col-md-4" align="right">100%</div>
         </div>
-        <input type="range" class="custom-range" min="0" max="100" step="10" init="0" id="customRange2">
-
+        <form action="{% url 'contents:detail' content.pk%}" method="post" id="range-form">
+          {% csrf_token %}
+        <input type="range" class="custom-range" min="0" max="100" step="10" init="0" id="customRange2" name="expertise_percentage">
+        
+      </form>
         </div>
             
     </div>
@@ -68,7 +71,7 @@
 
         function RateFunction() {
           var x = document.getElementById("customRange2");
-          alert(x.value);
+          document.getElementById("range-form").submit();
         }
   </script>
 {% endblock javascript %}

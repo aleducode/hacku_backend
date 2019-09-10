@@ -1,0 +1,26 @@
+[
+    {
+        "model": "contents.contenttype",
+        "pk": 1,
+        "fields": {
+            "name": "Videos",
+            "slug_name": "videos"
+        }
+    },
+    {
+        "model": "contents.contenttype",
+        "pk": 2,
+        "fields": {
+            "name": "Lecturas",
+            "slug_name": "lecturas"
+        }
+    },
+    {
+        "model": "contents.contenttype",
+        "pk": 3,
+        "fields": {
+            "name": "Audio",
+            "slug_name": "audio"
+        }
+    }
+]

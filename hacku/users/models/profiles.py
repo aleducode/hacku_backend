@@ -5,28 +5,7 @@ from django.db import models
 
 # utilities
 from hacku.utils.models import HackuModel
-
-
-class ContentType(models.Model):
-    """Content type format."""
-
-    name = models.CharField('Content type name', max_length=140)
-    slug_name = models.SlugField(unique=True, max_length=40)
-
-    def __str__(self):
-        """Return name name."""
-        return str(self.name)
-
-
-class ContentArea(models.Model):
-    """Content Area model."""
-
-    name = models.CharField('Content area name', max_length=140)
-    slug_name = models.SlugField(unique=True, max_length=40)
-
-    def __str__(self):
-        """Return name name."""
-        return str(self.name)
+from django.contrib.postgres.fields import JSONField
 
 
 class PreferenceContentProfile(HackuModel):
@@ -38,10 +17,10 @@ class PreferenceContentProfile(HackuModel):
     user = models.OneToOneField('users.User', on_delete=models.CASCADE)
 
     content_type = models.ManyToManyField(
-        ContentType,
+        'contents.ContentType',
         )
     area = models.ManyToManyField(
-        ContentArea,
+        'contents.ContentArea',
         )
 
     hour = models.TimeField(
@@ -54,6 +33,17 @@ class PreferenceContentProfile(HackuModel):
         'English Content',
         default=False,
         help_text='Used for enable english content.'
+    )
+
+    expertise_percentage = models.FloatField(
+        'Expertise Percentage',
+        default=0
+        )
+
+    meta_data = JSONField(
+        'Profile Preference Metada',
+        null=True,
+        blank=True
     )
 
     def __str__(self):

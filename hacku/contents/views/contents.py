@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth import login
-
+from django.shortcuts import render
 # Models
 from hacku.contents.models import Content
 from hacku.users.models import User
@@ -20,6 +20,8 @@ from datetime import timedelta
 
 # Twilio
 from twilio.rest import Client
+account_sid = settings.TWILIO_ACCOUNT_SID
+auth_token = settings.TWILIO_AUTH_TOKEN
 
 
 def gen_verification_token(user):
@@ -45,40 +47,69 @@ class ContentDetailView(LoginRequiredMixin, DetailView):
     context_object_name = 'content'
 
     def dispatch(self, request, *args, **kwargs):
-        import ipdb; ipdb.set_trace()
-        token = self.request.GET.get('token')
+        token = self.request.GET.get('token', None)
         # TODO: Handle expire token and bad request
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
-        # Force login
-        user = User.objects.get(username=payload.get('user'))
-        login(self.request, user)
+        if token:
+            payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
+            # Force login
+            user = User.objects.get(username=payload.get('user'))
+            login(self.request, user)
         return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        """Percentage expertise creation."""
+        # TODO: kill token vigence or viewed publications by user
+        expertise_percentage_selected = int(request.POST.get('expertise_percentage'))
+        user = self.request.user
+        publication = self.get_object()
+        # expertise date
+        user_expertise = user.preferencecontentprofile.expertise_percentage
+        publication_expertise = publication.expertise_percentage
+
+        if expertise_percentage_selected >= 50:
+            user_expertise += 0.05*publication_expertise
+        elif expertise_percentage_selected in range(5, 50):
+            user_expertise += 0.02*publication_expertise
+        else:
+            user_expertise -= 0.05*publication_expertise
+
+        # considerable expert calification
+        if user_expertise > 50:
+            diff = (publication_expertise - expertise_percentage_selected)
+            if diff not in range(-20, 20):
+                if diff > 0:
+                    # add expertise to publication
+                    publication_expertise += 10
+                else:
+                    # less expertise to publication
+                    publication_expertise -= 10
+        user.preferencecontentprofile.expertise_percentage = user_expertise
+        user.preferencecontentprofile.save()
+        publication.expertise_percentage = publication_expertise
+        publication.save()
+        return render(request, 'account/feedback.html')
 
 
 class SendExampleURL(LoginRequiredMixin, TemplateView):
     """Send url content example."""
-    
-    template_name = 'account/thanks.html'
-    
+
+    template_name = 'account/sent_test.html'
+
     def get(self, request, *args, **kwargs):
         user = self.request.user
         verification_token = gen_verification_token(user)
-        url = reverse_lazy('contents:detail', kwargs={'pk': '1'})
         complete_url = '{}/contents/ver/1?token={}'.format(
-            'localhost:8000',
+            settings.URL_HACKU,
             verification_token)
-        # account_sid = "ACee4d3b631b78711699fddf9ec2f52824"
-        # # Your Auth Token from twilio.com/console
-        # auth_token = "32c89246ef729ecfb52b789a3a81313a"
-        # client = Client(account_sid, auth_token)
-        # message = client.messages.create(
-        #         to='whatsapp:{}'.format(user.phone_number),
-        #         from_='whatsapp:+14155238886',
-        #         body='hi @{} this is your daily capsule {}'.format(
-        #             user.username,
-        #             str(complete_url)
-        #             ))
-        print(complete_url)
+
+        client = Client(account_sid, auth_token)
+        message = client.messages.create(
+                to='whatsapp:{}'.format(user.phone_number),
+                from_='whatsapp:+14155238886',
+                body='hi @{} this is your daily capsule {}'.format(
+                    user.username,
+                    str(complete_url)
+                    ))
         return super().get(request, *args, **kwargs)
 
 

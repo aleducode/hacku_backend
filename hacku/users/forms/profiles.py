@@ -6,6 +6,8 @@ from django import forms
 # Models
 from hacku.users.models import (
     PreferenceContentProfile,
+)
+from hacku.contents.models import (
     ContentArea,
     ContentType
     )
@@ -37,8 +39,15 @@ class PreferenceContentProfileForm(forms.ModelForm):
 
     class Meta:
         """Meta class."""
+
         model = PreferenceContentProfile
-        fields = '__all__'
+        fields = ('content_type',
+                  'user',
+                  'area',
+                  'hour',
+                  'english_content',
+                  'expertise_percentage'
+                  )
 
 
     

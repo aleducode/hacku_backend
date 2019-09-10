@@ -11,7 +11,7 @@ SECRET_KEY = env(
     default="v9XgigDMiJhvY1B5GMhQSEYDWjWADQVhdpiJpHKuvqjFy1YsG9GEhucS4xYp4QKR",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1"]
+ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "idargentina.com"]
 
 # CACHES
 # ------------------------------------------------------------------------------
@@ -53,3 +53,4 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
+URL_HACKU = env('URL_HACKU')

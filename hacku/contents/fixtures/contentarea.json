@@ -1,0 +1,34 @@
+[
+    {
+        "model": "contents.contentarea",
+        "pk": 1,
+        "fields": {
+            "name": "Tecnologías exponenciales",
+            "slug_name": "tech-exp"
+        }
+    },
+    {
+        "model": "contents.contentarea",
+        "pk": 2,
+        "fields": {
+            "name": "Innovación y emprendimiento",
+            "slug_name": "innovacion"
+        }
+    },
+    {
+        "model": "contents.contentarea",
+        "pk": 3,
+        "fields": {
+            "name": "Desarrollo personal y liderazgo exponencial",
+            "slug_name": "dllo-personal"
+        }
+    },
+    {
+        "model": "contents.contentarea",
+        "pk": 4,
+        "fields": {
+            "name": "Marketing digital",
+            "slug_name": "mkt-digital"
+        }
+    }
+]

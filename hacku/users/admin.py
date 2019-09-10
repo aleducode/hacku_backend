@@ -8,8 +8,6 @@ from django.contrib.auth.admin import UserAdmin
 from hacku.users.models import (
     User,
     PreferenceContentProfile,
-    ContentType,
-    ContentArea
     )
 
 
@@ -24,22 +22,8 @@ class CustomUserAdmin(UserAdmin):
 class PreferenceContentProfileAdmin(admin.ModelAdmin):
     """PreferenceContentProfile model admin."""
 
-    list_display = ('user', 'hour')
+    list_display = ('user', 'hour', 'expertise_percentage')
     search_fields = ('user__username', 'user__email', 'user___first_name', 'user__last_name')
-
-
-@admin.register(ContentType)
-class ContentTypeAdmin(admin.ModelAdmin):
-    """ContentType model admin."""
-
-    list_display = ('name', 'slug_name')
-
-
-@admin.register(ContentArea)
-class ContentAreaAdmin(admin.ModelAdmin):
-    """ContentArea model admin."""
-
-    list_display = ('name', 'slug_name')
 
 
 admin.site.register(User, CustomUserAdmin)

@@ -8,6 +8,28 @@ from django.contrib.postgres.fields import JSONField
 from hacku.utils.models import HackuModel
 
 
+class ContentType(models.Model):
+    """Content type format."""
+
+    name = models.CharField('Content type name', max_length=140)
+    slug_name = models.SlugField(unique=True, max_length=40)
+
+    def __str__(self):
+        """Return content type name."""
+        return str(self.name)
+
+
+class ContentArea(models.Model):
+    """Content Area model."""
+
+    name = models.CharField('Content area name', max_length=140)
+    slug_name = models.SlugField(unique=True, max_length=40)
+
+    def __str__(self):
+        """Return content area name."""
+        return str(self.name)
+
+
 class Content(HackuModel):
     """Content type format."""
 
@@ -29,21 +51,22 @@ class Content(HackuModel):
     )
 
     content_type = models.ForeignKey(
-        'users.ContentType',
+        'ContentType',
         on_delete=models.CASCADE,
         null=True,
         help_text='Type of content.'
     )
 
     content_area = models.ForeignKey(
-        'users.ContentArea',
+        'ContentArea',
         on_delete=models.CASCADE,
         help_text='Content Area.'
     )
 
     meta_data = JSONField(
         'Content Metada',
-        null=True
+        null=True,
+        blank=True
     )
 
     duration = models.TimeField(
