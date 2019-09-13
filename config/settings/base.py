@@ -69,6 +69,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "hacku.users.apps.UsersAppConfig",
     "hacku.contents.apps.ContentsAppConfig",
+    "hacku.landing.apps.LandingAppConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

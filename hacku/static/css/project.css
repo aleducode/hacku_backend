@@ -11,3 +11,63 @@
   background-color: #f2dede;
   border-color: #eed3d7;
 }
+
+body::-webkit-scrollbar { width: 0 !important }
+body { overflow: -moz-scrollbars-none; }
+body { -ms-overflow-style: none; }
+
+.jumbotron {
+  position: relative;
+  padding: 0;
+  color: white;
+  z-index: 0;
+  background: linear-gradient( rgba(20,20,20, .5), rgba(20,20,20, .5)), url(../images/logos/WelcomeBackgroundhacku3.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.logo-element a {
+  z-index: 1;
+  position: absolute;
+  opacity: 1 !important;
+  top: 0px;
+  left: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.conocenos-element a{
+  z-index: 1;
+  position: absolute;
+  opacity: 1 !important;
+  top: 0px;
+  right: 0;
+  padding: 10px;
+}
+
+.inner-text {
+  top: 35%;
+  position: inherit;
+}
+
+/* scrolldown*/
+
+.jumbotron::before{
+  content: '╲╱';
+  position: absolute;
+  bottom: 2rem;
+  left: 90%;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
