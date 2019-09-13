@@ -71,3 +71,23 @@ body { -ms-overflow-style: none; }
   }
 }
 
+
+/* elements cards with images */
+
+.element-feature{
+  margin: 30px;
+  padding: 5px;
+}
+
+.card{
+  border: none;
+}
+
+@media screen and (max-width: 531px) {
+  .inversed-item { display: flex; flex-flow: column-reverse; }
+}
+
+.call-to-action{
+  margin: 60px;
+}
+
