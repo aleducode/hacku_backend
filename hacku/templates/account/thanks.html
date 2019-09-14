@@ -1,13 +1,12 @@
 {% extends "account/base.html" %}
 {% load static %}
-{% block title %}Thanks!!{% endblock %}
+{% block title %}Gracias{% endblock %}
 
 {% block inner %}
-<h1>Welcome <img src="{% static 'images/ico.png' %}" alt=""> @{{request.user.username}}</h1>
+<h1 class="display-4">Bienvenido <img src="{% static 'images/ico.png' %}" alt=""> @{{request.user.username}}</h1>
 
-<h3>Lets go to learn!!!</h3>
-
+<div class="intro-text">
+    <h2 class="display-5">¡Vamos a aprender!</h2>
+</div>
 
 {% endblock %}
-
-

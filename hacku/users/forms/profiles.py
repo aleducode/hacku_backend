@@ -18,7 +18,7 @@ class PreferenceContentProfileForm(forms.ModelForm):
 
     # TODO: Change to multiple radio buttons
     content_type = forms.ModelMultipleChoiceField(
-        label='Content Type',
+        label='Tipo de contenido',
         queryset=ContentType.objects.all(),
         widget=forms.SelectMultiple(
             attrs={
@@ -28,11 +28,32 @@ class PreferenceContentProfileForm(forms.ModelForm):
     )
 
     area = forms.ModelMultipleChoiceField(
-        label=' Area Content',
+        label='Área del contenido',
         queryset=ContentArea.objects.all(),
         widget=forms.SelectMultiple(
             attrs={
                 'class': 'form-control',
+            }
+        )
+    )
+
+
+    expertise_percentage = forms.CharField(
+        max_length=100,
+        label='Porcentaje de dominio del tema',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control'
+            }
+        )
+    )
+
+    english_content = forms.BooleanField(
+        label='Habilitar contenido en inglés',
+        required=False,
+        widget=forms.CheckboxInput(
+            attrs={
+                'class': 'form-control'
             }
         )
     )

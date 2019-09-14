@@ -47,10 +47,10 @@ class ThanksView(LoginRequiredMixin, TemplateView):
         user = request.user
         # Twilio
         client = Client(account_sid, auth_token)
-        message = client.messages.create(
-            to='whatsapp:{}'.format(user.phone_number),
-            from_='whatsapp:+14155238886',
-            body="Hello @{} lets go to learn with HACKU!".format(user.username))
+        # message = client.messages.create(
+        #     to='whatsapp:{}'.format(user.phone_number),
+        #     from_='whatsapp:+14155238886',
+        #     body="Hello @{} lets go to learn with HACKU!".format(user.username))
         
         return super().get(request, *args, **kwargs)
 

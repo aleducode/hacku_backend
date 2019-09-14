@@ -2,62 +2,82 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Registro" %}{% endblock %}
 
-{% block inner %}
-<h1>{% trans "Sign Up" %}</h1>
-
-<p>{% blocktrans %}Already have an account? Then please <a href="">sign in</a>.{% endblocktrans %}</p>
-
-{% if form.errors %}
-<div class="alert alert-danger" role="alert">
-  {% for dict in form.errors.values %}
-  {{dict}}
-{% endfor %}
+{% block content %}
+<div class="text-banner">
+  <h1 class="display-4 text-center">"El mundo le pertenece a quienes lo desafian"</h1>
 </div>
-{% endif %}
+<div class="info-registro">
+  <h2 class="display-6 text-justify">Bienvenido a hackU la empresa que existe por reinventar el sistema de educacion
+    conoce mas de
+    nosotros
+    <a href="http://" target="_blank" rel="noopener noreferrer">Aqui</a>.
+    Hoy inicia tu aprendizaje en <b>hackU capsulas via whatsapp </b>, escoge tus
+    preferencias, llena tus datos y preparate para esta experiencia. Si ya tienes cuenta <a href="">Iniciar
+      sesión</a>
+  </h2>
+</div>
+<div class="row col-md-6 offset-md-3">
+  {% if form.errors %}
+  <div class="alert alert-danger" role="alert">
+    {% for dict in form.errors.values %}
+    {{dict}}
+    {% endfor %}
+  </div>
+  {% endif %}
 
+  <hr>
 
-<form method="post">
-  {% csrf_token %}
-  <div class="row">
-    <div class="col-md-12 form-group">
-      {{ form.first_name }}
-      <div class="invalid-feedback">
-          Please provide a valid city.
+  <form method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <label for="first_name" class="col-sm-2 col-form-label">{{form.first_name.label}}</label>
+        {{ form.first_name }}
+        <div class="invalid-feedback">
+          Por favor escribe una ciudad válida.
+        </div>
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <label for="last_name" class="col-sm-2 col-form-label">{{form.last_name.label}}</label>
+        {{ form.last_name }}
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="email" class="col-sm-2 col-form-label">{{form.email.label}}</label>
+        {{ form.email }}
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="username" class="col-sm-2 col-form-label">{{form.username.label}}</label>
+        {{ form.username }}
+      </div>
+      <div class="col-md-4 mb-3">
+        {{ form.phone_prefix }}
+      </div>
+      <div class="col-md-8  mb-3">
+        {{ form.phone_number }}
+      </div>
+
+      <div class="col-md-12 mb-3">
+        <label for="password" class="col-sm-2 col-form-label">{{form.password.label}}</label>
+        {{ form.password }}
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="password_confirmation" class="col-sm-2 col-form-label">{{form.password_confirmation.label}}</label>
+        {{ form.password_confirmation }}
       </div>
     </div>
-    
-    <div class="col-md-12 mb-3">
-      {{ form.last_name }}
-    </div>
-    <div class="col-md-12 mb-3">
-      {{ form.email }}
-    </div>
-    <div class="col-md-12 mb-3">
-      {{ form.username }}
-    </div>
-    <div class="col-md-4 mb-3">
-      {{ form.phone_prefix }}
-    </div>
-    <div class="col-md-8  mb-3">
-      {{ form.phone_number }}
-    </div>
-
-    <div class="col-md-12 mb-3">
-      {{ form.password }}
-    </div>
-    <div class="col-md-12 mb-3">
-      {{ form.password_confirmation }}
-    </div>
-  </div>
 
 
 
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="btn btn-primary" type="submit">{% trans "Next Step" %} &raquo;</button>
-</form>
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+    <div class="buttons text-center">
+      <button class="btn btn-3 text-center" type="submit">{% trans "Siguiente" %}</button>
+    </div>
+  </form>
+</div>
 
 {% endblock %}
