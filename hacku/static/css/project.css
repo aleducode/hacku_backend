@@ -12,20 +12,29 @@
   border-color: #eed3d7;
 }
 
-body::-webkit-scrollbar { width: 0 !important }
-body { overflow: -moz-scrollbars-none; }
-body { -ms-overflow-style: none; }
+body::-webkit-scrollbar {
+  width: 0 !important
+}
+
+body {
+  overflow: -moz-scrollbars-none;
+}
+
+body {
+  -ms-overflow-style: none;
+}
 
 .jumbotron {
   position: relative;
   padding: 0;
   color: white;
   z-index: 0;
-  background: linear-gradient( rgba(20,20,20, .5), rgba(20,20,20, .5)), url(../images/logos/WelcomeBackgroundhacku3.jpeg);
+  background: linear-gradient(rgba(20, 20, 20, .5), rgba(20, 20, 20, .5)), url(../images/logos/WelcomeBackgroundhacku3.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
+  margin-bottom: 0px !important;
 }
 
 .logo-element a {
@@ -38,7 +47,7 @@ body { -ms-overflow-style: none; }
   padding: 10px;
 }
 
-.conocenos-element a{
+.conocenos-element a {
   z-index: 1;
   position: absolute;
   opacity: 1 !important;
@@ -54,7 +63,7 @@ body { -ms-overflow-style: none; }
 
 /* scrolldown*/
 
-.jumbotron::before{
+.jumbotron::before {
   content: '╲╱';
   position: absolute;
   bottom: 2rem;
@@ -66,6 +75,7 @@ body { -ms-overflow-style: none; }
   50% {
     transform: translateY(-50%);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -74,20 +84,87 @@ body { -ms-overflow-style: none; }
 
 /* elements cards with images */
 
-.element-feature{
+.element-feature {
   margin: 30px;
   padding: 5px;
 }
 
-.card{
+.card {
   border: none;
 }
 
 @media screen and (max-width: 531px) {
-  .inversed-item { display: flex; flex-flow: column-reverse; }
+  .inversed-item {
+    display: flex;
+    flex-flow: column-reverse;
+  }
 }
 
-.call-to-action{
+.call-to-action {
   margin: 60px;
 }
 
+.display-5 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.display-6 {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.text-banner .display-4 {
+  font-size: 3.2rem;
+}
+
+.text-banner {
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.info-registro {
+  margin-bottom: 15px;
+}
+
+.btn-3 {
+  background-image: linear-gradient(to right, #42ac68 0%, #5ab5e2 51%, #46fd89 100%);
+}
+
+.btn-3:hover {
+  background-position: right center;
+  color: black !important;
+  /* change the direction of the change here */
+}
+
+.btn-3 {
+  flex: 1 1 auto;
+  margin: 10px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 780px) {
+  .social-media {
+    margin-left: 5px !important;
+  }
+}
+
+.social-media {
+  margin-left: 25px;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+footer a:hover {
+  color: inherit;
+}

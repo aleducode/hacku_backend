@@ -18,7 +18,7 @@ class SignUpForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'First Name'
+                'placeholder': 'Nombre'
                 }
         )
     )
@@ -30,7 +30,7 @@ class SignUpForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Last Name'
+                'placeholder': 'Apellido'
             }
         )
     )
@@ -42,7 +42,7 @@ class SignUpForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Nickname'
+                'placeholder': 'Nombre de usuario'
             }
         )
     )
@@ -50,7 +50,7 @@ class SignUpForm(forms.Form):
         widget=forms.Select(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Prefix phone'
+                'placeholder': 'Prefijo'
 
             },
             choices=COUNTRY_CODES
@@ -63,7 +63,7 @@ class SignUpForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Phone Number'
+                'placeholder': 'Teléfono'
             }
         )
     )
@@ -87,7 +87,7 @@ class SignUpForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Password'
+                'placeholder': 'Contraseña'
                 }
         )
     )
@@ -99,7 +99,7 @@ class SignUpForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Password Confirmation'
+                'placeholder': 'Confirmación contraseña'
                 }
         )
     )
@@ -109,7 +109,7 @@ class SignUpForm(forms.Form):
         username = self.cleaned_data['username']
         username_taken = User.objects.filter(username=username).exists()
         if username_taken:
-            raise forms.ValidationError('Username is already in use.')
+            raise forms.ValidationError('Nombre de usuario ya existente.')
         return username
 
     def clean_email(self):
@@ -117,7 +117,7 @@ class SignUpForm(forms.Form):
         email = self.cleaned_data['email']
         email_taken = User.objects.filter(email=email).exists()
         if email_taken:
-            raise forms.ValidationError('Email is already in use.')
+            raise forms.ValidationError('Email ya en uso.')
         return email
 
     def clean_phone_number(self):
@@ -133,7 +133,7 @@ class SignUpForm(forms.Form):
         password_confirmation = data['password_confirmation']
 
         if password != password_confirmation:
-            raise forms.ValidationError('Password do not match')
+            raise forms.ValidationError('Las contraseñas no coinciden')
         return data
 
     def save(self):

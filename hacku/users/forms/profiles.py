@@ -18,7 +18,7 @@ class PreferenceContentProfileForm(forms.ModelForm):
 
     # TODO: Change to multiple radio buttons
     content_type = forms.ModelMultipleChoiceField(
-        label='Content Type',
+        label='Tipo de contenido',
         queryset=ContentType.objects.all(),
         widget=forms.SelectMultiple(
             attrs={
@@ -28,7 +28,7 @@ class PreferenceContentProfileForm(forms.ModelForm):
     )
 
     area = forms.ModelMultipleChoiceField(
-        label=' Area Content',
+        label='Área del contenido',
         queryset=ContentArea.objects.all(),
         widget=forms.SelectMultiple(
             attrs={

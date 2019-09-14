@@ -2,16 +2,16 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Registro" %}{% endblock %}
 
 {% block inner %}
-<h1>{% trans "Sign Up Complement" %}</h1>
-<p>{% blocktrans %}Complement information for: {% endblocktrans %}@{{request.user.username}}.</p>
+<h1>{% trans "Completa tu registro" %}</h1>
+<p>{% blocktrans %}<b>Información para: </b>{% endblocktrans %}@{{request.user.username}}.</p>
 
 {% if form.errors %}
 <div class="alert alert-danger" role="alert">
   {% for value in form.errors%}
-    {{value}}
+  {{value}}
   {% endfor %}
   {% for dict in form.errors.values %}
   {{dict}}
@@ -32,31 +32,32 @@
       {{form.area}}
 
     </div>
-    <div class="col-md-12 mb-3">
-        <p>{{form.expertise_percentage.label}}</p>
-        {{form.expertise_percentage}}
-  
-      </div>
+    <div class="col-md-6 col-sm-12">
+      <p>{{form.expertise_percentage.label}}</p>
+      {{form.expertise_percentage}}
+
+    </div>
     {# Time-hour field #}
-    <div class="col-sm-6">
-        <div class="form-group">
-          <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
-            <input type="text" name="hour" placeholder="Preference hour" class="form-control datetimepicker-input"
-              data-target="#datetimepicker3" />
-            <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
-            </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="form-group">
+        <div class="input-group date" id="datetimepicker3" data-target-input="nearest">
+          <label for="last_name" class="col-sm-12 col-form-label">Hora</label>
+          <input type="text" name="hour" placeholder="Hora de preferencia" class="form-control datetimepicker-input"
+            data-target="#datetimepicker3" />
+          <div class="input-group-append" data-target="#datetimepicker3" data-toggle="datetimepicker">
+            <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
           </div>
         </div>
       </div>
-      {# English conten label #}
-      <div class="col-md-12 mb-3">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="customCheck1" name="english">
-          <label class="custom-control-label" for="customCheck1">{{form.english_content.label}}</label>
-        </div>
+    </div>
+    {# English conten label #}
+    <div class="col-md-12 mb-3 col-sm-12">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="customCheck1" name="english">
+        <label class="custom-control-label" for="customCheck1">{{form.english_content.label}}</label>
       </div>
-      <input type="hidden" name="user" value="{{request.user.pk}}">
+    </div>
+    <input type="hidden" name="user" value="{{request.user.pk}}">
 
 
   </div>
@@ -66,7 +67,9 @@
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button class="btn btn-primary" type="submit">{% trans "Finish" %}</button>
+  <div class="text-center">
+    <button class="btn btn-3" type="submit">{% trans "Finalizar" %}</button>
+  </div>
 </form>
 
 {% endblock %}
@@ -75,8 +78,9 @@
   $(function () {
     $('#datetimepicker3').datetimepicker({
       format: 'HH:mm',
-      
+
     });
   });
+
 </script>
 {% endblock javascript %}

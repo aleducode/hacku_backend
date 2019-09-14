@@ -18,10 +18,10 @@ class PreferenceContentProfile(HackuModel):
 
     content_type = models.ManyToManyField(
         'contents.ContentType',
-        )
+    )
     area = models.ManyToManyField(
         'contents.ContentArea',
-        )
+    )
 
     hour = models.TimeField(
         'Hour preference',
@@ -38,7 +38,7 @@ class PreferenceContentProfile(HackuModel):
     expertise_percentage = models.FloatField(
         'Expertise Percentage',
         default=0
-        )
+    )
 
     meta_data = JSONField(
         'Profile Preference Metada',
