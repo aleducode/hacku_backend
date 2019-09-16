@@ -14,11 +14,10 @@ class SignUpForm(forms.Form):
     first_name = forms.CharField(
         min_length=2,
         max_length=50,
-        label='',
+        label='Nombre',
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'First Name'
                 }
         )
     )
@@ -26,11 +25,10 @@ class SignUpForm(forms.Form):
     last_name = forms.CharField(
         min_length=2,
         max_length=50,
-        label='',
+        label='Apellido',
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control',
-                'placeholder': 'Last Name'
+                'class': 'form-control'
             }
         )
     )
@@ -38,20 +36,17 @@ class SignUpForm(forms.Form):
     username = forms.CharField(
         min_length=4,
         max_length=50,
-        label='',
+        label='Usuario',
         widget=forms.TextInput(
             attrs={
-                'class': 'form-control',
-                'placeholder': 'Nickname'
+                'class': 'form-control'
             }
         )
     )
     phone_prefix = forms.CharField(
         widget=forms.Select(
             attrs={
-                'class': 'form-control',
-                'placeholder': 'Prefix phone'
-
+                'class': 'form-control'
             },
             choices=COUNTRY_CODES
         )
@@ -63,7 +58,7 @@ class SignUpForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Phone Number'
+                'placeholder': 'Teléfono móvil'
             }
         )
     )
@@ -71,36 +66,33 @@ class SignUpForm(forms.Form):
     email = forms.CharField(
         min_length=6,
         max_length=70,
-        label='',
+        label='Email',
         widget=forms.EmailInput(
             attrs={
-                'class': 'form-control',
-                'placeholder': 'Email'
-                }
+                'class': 'form-control'
+            }
         )
     )
 
     password = forms.CharField(
         min_length=7,
         max_length=20,
-        label='',
+        label='Contraseña',
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Password'
-                }
+            }
         )
     )
 
     password_confirmation = forms.CharField(
         min_length=7,
         max_length=20,
-        label='',
+        label='Contraseña',
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Password Confirmation'
-                }
+            }
         )
     )
 
@@ -109,7 +101,7 @@ class SignUpForm(forms.Form):
         username = self.cleaned_data['username']
         username_taken = User.objects.filter(username=username).exists()
         if username_taken:
-            raise forms.ValidationError('Username is already in use.')
+            raise forms.ValidationError('Nombre de usuario ya existente.')
         return username
 
     def clean_email(self):
@@ -117,7 +109,7 @@ class SignUpForm(forms.Form):
         email = self.cleaned_data['email']
         email_taken = User.objects.filter(email=email).exists()
         if email_taken:
-            raise forms.ValidationError('Email is already in use.')
+            raise forms.ValidationError('Email ya en uso.')
         return email
 
     def clean_phone_number(self):
@@ -133,7 +125,7 @@ class SignUpForm(forms.Form):
         password_confirmation = data['password_confirmation']
 
         if password != password_confirmation:
-            raise forms.ValidationError('Password do not match')
+            raise forms.ValidationError('Las contraseñas no coinciden')
         return data
 
     def save(self):

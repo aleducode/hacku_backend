@@ -1,0 +1,69 @@
+{% extends "landing/base.html" %}
+{% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
+{% block head_content %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container inner-text text-center">
+    <h1 class="display-4">Aprende a diario</h1>
+    <p class="display-5 ">Hacemos la edu simple</p>
+    <a class="btn btn-3" href="/signup">Empieza ahora</a>
+  </div>
+</div>
+<div class="container">
+  <div class="row element-feature">
+    <div class="col-lg-3 col-md-3  col-sm-12">
+      <img src="https://picsum.photos/900" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="col-sm-9 col-md-9 col-lg-9 ">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Contenido recurrente</h5>
+          <p class="card-text">A diario te llegara contenido curado de la mejor calidad que dura menos de 30 minutos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row element-feature inversed-item">
+    <div class="col-sm-9 col-md-9 col-lg-9 ">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Aprendizaje de por vida</h5>
+          <p class="card-text">Por solo obten 1 mes de aprendizaje con contenido filtrado.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-3  col-sm-12">
+      <img src="https://picsum.photos/900" class="img-fluid" alt="Responsive image">
+    </div>
+  </div>
+  <hr>
+  <div class="row element-feature">
+    <div class="col-lg-3 col-md-3  col-sm-12">
+      <img src="https://picsum.photos/900" class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="col-sm-9 col-md-9 col-lg-9 ">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Temas de actualidad</h5>
+          <p class="card-text">Aprende sobre las areas mas importantes de la actualidad</p>
+          <ul>
+            <li>Marketing</li>
+            <li>Innovacion</li>
+            <li>Soft skills</li>
+            <li>Tecnologias exponenciales</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="call-to-action text-center">
+    <a class="btn btn-3 btn-lg" href="/signup">Empieza ahora</a>
+  </div>
+
+
+</div>
+
+
+{% endblock %}

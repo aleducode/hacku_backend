@@ -10,6 +10,7 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
     # Other app
     path('', include(('hacku.users.urls', 'users'), namespace='users')),
+    path('', include(('hacku.landing.urls', 'landing'), namespace='landing')),
     path('contents/', include(('hacku.contents.urls', 'contents'), namespace='contents')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
