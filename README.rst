@@ -29,7 +29,7 @@ Setting Up Your Users
 
 * Create **.envs** files for all development enviroments (Local & Production)
 
-* Build docker images and setup initial project
+* Build docker images and setup initial project::
 
     $ docker-compose -f local.yml build
 
@@ -38,6 +38,7 @@ Setting Up Your Users
     $ docker-compose -f local.yml run --rm --service-port django python manage.py createsuperuser
 
 * To download  **hacku's required datasets**, use this command::
+
     $ docker-compose -f local.yml run --rm --service-port django python manage.py setup
 
 
