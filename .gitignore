@@ -8,7 +8,7 @@ __pycache__/
 *.so
 
 # Hacku ignores
-.envs/production
+.envs
 .vscode
 # Distribution / packaging
 .Python

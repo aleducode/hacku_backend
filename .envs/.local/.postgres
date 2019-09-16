@@ -1,7 +1,0 @@
-# PostgreSQL
-# ------------------------------------------------------------------------------
-POSTGRES_HOST=postgres
-POSTGRES_PORT=5432
-POSTGRES_DB=hacku
-POSTGRES_USER=OazFcEUNLtsoMxbAeorqezTLlNKUCmRn
-POSTGRES_PASSWORD=HbBK9UU41xfBlLBS8djBCpKzORCOfVQfZyaqroxAbV9vyAtfL2EmxbeVYAQEfSFG
