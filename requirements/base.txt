@@ -19,5 +19,5 @@ django-compressor==2.3  # https://github.com/django-compressor/django-compressor
 django-redis==4.10.0  
 twilio
 #JWT
-pyjwt==1.7.1
+pyjwt==2.4.0
 
